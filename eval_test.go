@@ -1,7 +1,7 @@
 package eval
 
 import (
-	"github.com/stretchr/testify/assert"
+	"fmt"
 	"testing"
 )
 
@@ -9,10 +9,12 @@ func TestEval(t *testing.T) {
 	code := `
 package main
 
-func main() {
-	fmt.Println("Hello world")
+func Main() {
 }
 `
 	err := Eval(code)
-	assert.NoError(t, err)
+	if err != nil {
+		fmt.Println(err.Error())
+		t.Fail()
+	}
 }
